@@ -30,7 +30,6 @@ const Container = ({ children }: ContainerProps) => {
     })
 
     const onAdd = (newTodo: string) => {
-        console.log(import.meta.env.VITE_BASE_URL);
         mutationAdd.mutate({
             title: newTodo,
             completed: false
