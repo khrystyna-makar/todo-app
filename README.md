@@ -1,4 +1,5 @@
 #  ToDo App
+Завдання - https://docs.google.com/document/d/1mTNjMAjX8InKRuQWQMUzVE8ljP8jpgF4rB6RZfAUmTo/edit
 # How to run 
 1. Clone the project
 ```
