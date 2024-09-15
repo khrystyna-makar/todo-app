@@ -6,7 +6,7 @@ import { Todo } from "../../api";
 type TodoItemProps = {
     todo: Todo;
     className: string;
-    onEdit: () => void;
+    onEdit: (newTodo: Todo) => void;
     onDelete: (id: number) => void;
 }
 
@@ -18,12 +18,12 @@ const TodoItem = ({ todo, className, onEdit, onDelete }: TodoItemProps) => {
             <Typography className="title">{todo.title}</Typography>
             <Box className="buttons">
                 <Tooltip title="Edit">
-                    <IconButton onClick={() => onEdit()} aria-label="edit"> 
+                    <IconButton onClick={() => onEdit(todo)} aria-label="edit"> 
                         <EditIcon />
                     </IconButton>
                 </Tooltip>
                 <Tooltip title="Delete">
-                    <IconButton onClick={() => onDelete(todo.id!)} aria-label="delete">
+                    <IconButton onClick={() => onDelete(todo.id)} aria-label="delete">
                         <DeleteIcon />
                     </IconButton>
                 </Tooltip>

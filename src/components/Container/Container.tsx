@@ -6,14 +6,14 @@ import {
 import api, { Todo } from '../../api';
 
 type ContainerProps = {
-    children: any;
+    children: (props: ContainerChildrenProps) => React.ReactNode;
 }
 export type ContainerChildrenProps = {
     isLoading: boolean;
-    data: any;
-    onAdd: () => void;
-    onUpdate: () => void;
-    onDelete: () => void;
+    data: Todo[];
+    onAdd: (newTodo: string) => void;
+    onUpdate: (newTodo: Todo) => void;
+    onDelete: (id:number) => void;
 }
 
 const Container = ({ children }: ContainerProps) => {
@@ -32,7 +32,8 @@ const Container = ({ children }: ContainerProps) => {
     const onAdd = (newTodo: string) => {
         mutationAdd.mutate({
             title: newTodo,
-            completed: false
+            completed: false,
+            id: 0
         });
     }
 
@@ -45,10 +46,11 @@ const Container = ({ children }: ContainerProps) => {
 
     const onUpdate = (newTodo: Todo) => {
         mutationUpdate.mutate({
-            id: newTodo?.id!,
+            id: newTodo.id,
             todo: {
                 title: newTodo.title,
-                completed: newTodo.completed
+                completed: newTodo.completed,
+                id: newTodo.id
             }
         });
     }
